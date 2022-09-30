@@ -1,1 +1,5 @@
 // Reexport your entry components here
+import PageLayout from "./page-layout.svelte";
+import SidebarGroup from "./sidebar-group.svelte";
+import SidebarTab from "./sidebar-tab.svelte";
+export default { PageLayout, SidebarGroup, SidebarTab };
