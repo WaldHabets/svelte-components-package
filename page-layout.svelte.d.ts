@@ -3,13 +3,13 @@ declare const __propDef: {
     props: {
         /** Exports */ backNavigation?: string | false | undefined;
         backNavigationLabel?: string | undefined;
+        sidebar?: any[] | undefined;
     };
     events: {
         [evt: string]: CustomEvent<any>;
     };
     slots: {
         'header-end': {};
-        'sidebar-nav': {};
         'sidebar-actions': {};
         main: {};
     };

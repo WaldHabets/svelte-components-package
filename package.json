@@ -24,10 +24,16 @@
   "type": "module",
   "exports": {
     "./package.json": "./package.json",
+    "./details-container.svelte": "./details-container.svelte",
     ".": "./index.js",
     "./list-item-active.svelte": "./list-item-active.svelte",
+    "./list-item-link.svelte": "./list-item-link.svelte",
+    "./modal-action.svelte": "./modal-action.svelte",
+    "./modal-alert.svelte": "./modal-alert.svelte",
+    "./modal-picker.svelte": "./modal-picker.svelte",
+    "./modal": "./modal.js",
     "./page-layout.svelte": "./page-layout.svelte",
-    "./sidebar-group.svelte": "./sidebar-group.svelte",
+    "./sidebar-contents": "./sidebar-contents.js",
     "./sidebar-tab.svelte": "./sidebar-tab.svelte"
   },
   "svelte": "./index.js"

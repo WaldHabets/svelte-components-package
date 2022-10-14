@@ -7,6 +7,9 @@ declare const __propDef: {
         title: string;
     };
     events: {
+        click: MouseEvent;
+        nav: CustomEvent<any>;
+    } & {
         [evt: string]: CustomEvent<any>;
     };
     slots: {};

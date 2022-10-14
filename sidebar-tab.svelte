@@ -2,15 +2,21 @@
     export const prerender = true;
 </script>
 
-<script>import { page } from "$app/stores";
+<script>/** events */
+import { createEventDispatcher } from 'svelte';
+const dispatch = createEventDispatcher();
+import { page } from "$app/stores";
 export let icon;
 export let href;
 export let title;
 $: active = $page.url.pathname === href;
+function notify() {
+    dispatch('nav');
+}
 </script>
 
 <li {title} class={active ? 'active' : ''}>
-   <a {href}>
+   <a {href} on:click>
        <svg viewBox="0 0 24 24">
            <path d={icon} />
        </svg>

@@ -1,39 +1,46 @@
-<script>/** Icons */
-import { mdiMenu, mdiMenuOpen, mdiArrowLeft } from "@mdi/js";
+<script>import { fly } from 'svelte/transition';
+import { quintOut } from 'svelte/easing';
+/** Components */
+import ListItemLink from "./list-item-link.svelte";
 /** Exports */
 export let backNavigation = false;
 export let backNavigationLabel = "Back";
+export let sidebar = [];
+/** Icons */
+import { mdiArrowLeft, mdiMenu } from "@mdi/js";
+//import { SidebarGroup } from "./sidebar-contents";
+import { page } from "$app/stores";
 /** Locals */
-let sidebarState = 'expanded';
+let sidebarState = '--collapsed';
+let width;
+$: formfactor = width > 780 ? '--wide' : '--small';
+$: wide = formfactor === '--wide';
+$: expanded = sidebarState === '--expanded';
 function toggleSidebar() {
-    sidebarState = (sidebarState === 'expanded')
-        ? 'collapsed'
-        : 'expanded';
+    sidebarState = (sidebarState === '--expanded')
+        ? '--collapsed'
+        : '--expanded';
+}
+function swipeHandler(event) {
 }
 </script>
 
-<div id="page" class={sidebarState}>
+<div id="page" class={sidebarState + ' ' + formfactor} bind:clientWidth={width}>
     <header id="page-header">
-        <section id="page-header-sidebar" class={sidebarState}>
-            {#if backNavigation}
-                <a href={backNavigation} class="flat-button default-size icon flex">
-                    <svg viewBox="0 0 24 24">
-                        <path d={mdiArrowLeft} />
-                    </svg>
-                    {backNavigationLabel}
-                </a>
-            {/if}
-            <button class="flat-button" on:click={toggleSidebar}>
-                {#if sidebarState === 'collapsed'}
+        <section id="page-header-sidebar">
+            {#if (!wide && !expanded && !backNavigation)}
+                <button class="" id="nav-back-button" on:click={toggleSidebar}>
                     <svg viewBox="0 0 24 24">
                         <path d={mdiMenu} />
                     </svg>
-                {:else}
+                </button>
+            {:else if backNavigation}
+                <a class="" id="nav-back-button" href={backNavigation} on:click={toggleSidebar}>
                     <svg viewBox="0 0 24 24">
-                        <path d={mdiMenuOpen} />
+                        <path d={mdiArrowLeft} />
                     </svg>
-                {/if}
-            </button>
+                </a>
+            {/if}
         </section>
         <section id="page-header-title">
 
@@ -42,17 +49,65 @@ function toggleSidebar() {
             <slot name="header-end" />
         </section>
     </header>
-    <div id="page-sidebar">
-        <nav>
-            <slot name="sidebar-nav" />
-        </nav>
-        <div>
-            <slot name="sidebar-actions" />
+    {#if wide}
+        <div id="page-sidebar" transition:fly="{{x: 100, y: 0, delay: 150, duration: 500, easing: quintOut }}">
+            <nav>
+                {#each sidebar as sidebarGroup}
+                    <ul class="sidebar-group">
+                        {#each sidebarGroup.items as sidebarItem}
+                            <li
+                              title={sidebarItem.text}
+                              class={$page.url.pathname === sidebarItem.href ? 'active sidebar-item' : 'sidebar-item'}
+                                on:click={toggleSidebar}>
+                                <a href={sidebarItem.href}>
+                                    <svg viewBox="0 0 24 24">
+                                        <path d={sidebarItem.icon} />
+                                    </svg>
+                                    <span>
+                                        {sidebarItem.text}
+                                    </span>
+                                </a>
+                            </li>
+                        {/each}
+                    </ul>
+                {/each}
+            </nav>
+            <div>
+                <slot name="sidebar-actions" />
+            </div>
         </div>
-    </div>
-    <main id="page-main">
-        <slot name="main" />
-    </main>
+    {:else if expanded}
+        <div
+          id="page-sidebar-container"
+          on:click|self={toggleSidebar}>
+            <nav
+              id="page-sidebar"
+              transition:fly="{{x: -100, y: 0, delay: 150, duration: 500, easing: quintOut }}">
+                {#each sidebar as sidebarGroup}
+                    <section class="container-wrapper">
+                    <ul class="list-box">
+                        {#each sidebarGroup.items as sidebarItem}
+                            <ListItemLink
+                              href={sidebarItem.href}
+                              iconStart={sidebarItem.icon}
+                              on:navigate={toggleSidebar}>
+                                {sidebarItem.text}
+                            </ListItemLink>
+                        {/each}
+                    </ul>
+                    </section>
+                {/each}
+            </nav>
+            <div>
+                <slot name="sidebar-actions" />
+            </div>
+        </div>
+    {/if}
+    <!--{#if (wide || !expanded)}-->
+        <main id="page-main" transition:fly="{{x: -100, y: 0, delay: 150, duration: 500, easing: quintOut }}">
+            <slot name="main" />
+        </main>
+    <!--{/if}-->
 </div>
 
 <style>/** Theme Colours                       */
@@ -87,122 +142,201 @@ function toggleSidebar() {
 #page {
   background-color: #f0f3fa;
   display: grid;
-  grid-template-areas: "header header" "sidebar main";
-  grid-template-columns: min-content auto;
   grid-template-rows: 56px calc(100vh - 56px);
 }
-#page.expanded #page-header-sidebar,
-#page.expanded #page-sidebar {
-  width: 300px;
+#page.--small {
+  grid-template-areas: "header" "content";
+  grid-template-columns: auto;
 }
-#page.collapsed #page-sidebar {
-  width: 54px;
-}
-#page.collapsed #page-header-sidebar {
-  min-width: 54px;
-  width: max-content;
-}
-#page #page-header {
+#page.--small #page-header {
   grid-area: header;
-  background-color: transparent;
-  padding: 0;
-  margin: 0;
-  display: flex;
+  background-color: #f8f8f8;
 }
-#page #page-header section {
+#page.--small #page-sidebar-container {
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  height: 100vh;
+}
+#page.--small #page-sidebar {
+  border: none;
+  position: absolute;
   box-sizing: border-box;
-  height: 56px;
-  padding: 8px;
+  background-color: #f8f8f8;
+  max-width: calc(100% - 96px);
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  box-shadow: 1px 0 4px -2px;
 }
-#page #page-header #page-header-sidebar {
-  flex-shrink: 0;
+#page.--small #page-main {
+  grid-area: content;
 }
-#page #page-header #page-header-title {
-  width: available;
-  width: -moz-available;
-  flex-grow: 1;
-}
-#page #page-header #page-header-actions {
-  width: max-content;
-  flex-shrink: 0;
-}
-#page #page-header a.flat-button {
-  box-sizing: border-box;
-}
-#page #page-header button.flat-button {
+#page.--small #nav-back-button {
   box-sizing: border-box;
   width: 40px;
   height: 40px;
   padding: 6px;
+  background: none;
+  border: none;
+  border-radius: 8px;
 }
-#page #page-header button.flat-button svg {
+#page.--small #nav-back-button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+#page.--small #nav-back-button:active {
+  background: rgba(0, 0, 0, 0.1);
+}
+#page.--small #nav-back-button svg {
   width: 24px;
   height: 24px;
 }
-#page #page-header button.round {
+#page.--small #page-header {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+#page.--small #page-header section {
   box-sizing: border-box;
-  background-color: white;
-  border: 1px solid #bbb;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  padding: 7px;
-  box-shadow: 0 0 4px -2px #333;
+  height: 56px;
+  padding: 8px;
 }
-#page #page-header button.round svg {
-  width: 24px;
-  height: 24px;
+#page.--small #page-header #page-header-sidebar {
+  flex-shrink: 0;
+  display: flex;
+  gap: 8px;
 }
-#page #page-header button.round:hover {
-  cursor: pointer;
-  background-color: #bbb;
+#page.--small #page-header #page-header-title {
+  width: available;
+  width: -moz-available;
+  flex-grow: 1;
 }
-#page #page-header button.round:active {
-  box-shadow: none;
-  padding: 10px;
+#page.--small #page-header #page-header-actions {
+  width: max-content;
+  flex-shrink: 0;
 }
-#page #page-header button.round:active svg {
-  width: 28px;
-  height: 28px;
-}
-#page #page-sidebar {
-  grid-area: sidebar;
-  background-color: transparent;
+#page.--small #page-sidebar {
   height: 100%;
-  transition: width 0.5s, visibility 0.5s;
 }
-#page #page-main {
-  grid-area: main;
+#page.--small #page-main {
   overflow-y: scroll;
   background-color: #f8f8f8;
+}
+#page.--wide {
+  grid-template-areas: "header header" "sidebar main";
+  grid-template-columns: 300px auto;
+}
+#page.--wide #page-header {
+  grid-area: header;
+  background-color: transparent;
+}
+#page.--wide #page-sidebar {
+  grid-area: sidebar;
+  background-color: transparent;
+}
+#page.--wide #page-sidebar .sidebar-group {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+#page.--wide #page-sidebar .sidebar-group:not(:first-child) {
+  border-top: 1px solid #bbb;
+}
+#page.--wide #page-sidebar .sidebar-group .sidebar-item {
+  box-sizing: border-box;
+  height: 48px;
+  overflow: hidden;
+  margin: 0 8px;
+}
+#page.--wide #page-sidebar .sidebar-group .sidebar-item a {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+  padding: 8px;
+}
+#page.--wide #page-sidebar .sidebar-group .sidebar-item a svg {
+  box-sizing: border-box;
+  vertical-align: middle;
+  flex-shrink: 0;
+  color: inherit;
+  height: 32px;
+  width: 32px;
+  padding: 4px;
+  margin: 0 4px;
+}
+#page.--wide #page-sidebar .sidebar-group .sidebar-item a svg path {
+  fill: currentColor;
+}
+#page.--wide #page-sidebar .sidebar-group .sidebar-item a span {
+  display: inline-block;
+  line-height: 32px;
+  font-size: 16px;
+  overflow: hidden;
+  color: inherit;
+}
+#page.--wide #page-sidebar .sidebar-group .sidebar-item:hover, #page.--wide #page-sidebar .sidebar-group .sidebar-item.active {
+  cursor: pointer;
+  color: #042100;
+  background-color: #d5ebcb;
+  border-radius: 32px;
+}
+#page.--wide #page-main {
+  grid-area: main;
   border-top-left-radius: 16px;
   border-left: 2px solid #bbb;
   border-top: 2px solid #bbb;
 }
-@media screen and (max-width: 780px) {
-  #page #page-header-sidebar {
-    min-width: 54px;
-    width: max-content;
-  }
-  #page #page-sidebar {
-    border: none;
-  }
-  #page #page-main {
-    border-left: none;
-    border-radius: 0;
-  }
-  #page.expanded #page-sidebar {
-    width: 100vw;
-    visibility: visible;
-  }
-  #page.expanded #page-main {
-    display: none;
-  }
-  #page.collapsed #page-sidebar {
-    width: 0;
-    visibility: hidden;
-  }
-  #page.collapsed #page-main {
-    display: block;
-  }
+#page.--wide #nav-back-button {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  padding: 6px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+}
+#page.--wide #nav-back-button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+#page.--wide #nav-back-button:active {
+  background: rgba(0, 0, 0, 0.1);
+}
+#page.--wide #nav-back-button svg {
+  width: 24px;
+  height: 24px;
+}
+#page.--wide #page-header {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+#page.--wide #page-header section {
+  box-sizing: border-box;
+  height: 56px;
+  padding: 8px;
+}
+#page.--wide #page-header #page-header-sidebar {
+  flex-shrink: 0;
+  display: flex;
+  gap: 8px;
+}
+#page.--wide #page-header #page-header-title {
+  width: available;
+  width: -moz-available;
+  flex-grow: 1;
+}
+#page.--wide #page-header #page-header-actions {
+  width: max-content;
+  flex-shrink: 0;
+}
+#page.--wide #page-sidebar {
+  height: 100%;
+}
+#page.--wide #page-main {
+  overflow-y: scroll;
+  background-color: #f8f8f8;
 }</style>
