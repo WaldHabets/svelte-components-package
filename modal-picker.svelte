@@ -12,6 +12,9 @@ export const modal = {
     show() {
         showModal = true;
     },
+    showWithData(data) {
+        showModal = true;
+    },
     hide() {
         showModal = false;
     }

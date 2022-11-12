@@ -3,6 +3,9 @@ declare const __propDef: {
     props: {
         /** Props */ labelExpand?: string | undefined;
         labelCollapse?: string | undefined;
+        bClass?: string | undefined;
+        bClassSummary?: string | undefined;
+        bClassDetails?: string | undefined;
     };
     events: {
         [evt: string]: CustomEvent<any>;

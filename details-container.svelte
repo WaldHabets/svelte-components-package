@@ -1,5 +1,5 @@
-<div class="details-container-wrapper container">
-  <div class="summary-container">
+<div class={"details-container-wrapper container " + bClass}>
+  <div class={"summary-container " + bClassSummary}>
     <div class="summary">
       <slot name="summary" />
     </div>
@@ -11,7 +11,7 @@
     </button>
   </div>
     {#if open}
-      <div class="details-container">
+      <div class={"details-container " + bClassDetails}>
         <div class="details">
           <slot name="details" />
         </div>
@@ -30,6 +30,9 @@ import { mdiChevronDown, mdiChevronUp } from "@mdi/js";
 /** Props */
 export let labelExpand = "";
 export let labelCollapse = "";
+export let bClass = "";
+export let bClassSummary = "";
+export let bClassDetails = "";
 let open = false;
 function clickHandler() {
     open = !open;

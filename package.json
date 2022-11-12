@@ -24,6 +24,7 @@
   "type": "module",
   "exports": {
     "./package.json": "./package.json",
+    "./breadcrumbs.svelte": "./breadcrumbs.svelte",
     "./details-container.svelte": "./details-container.svelte",
     ".": "./index.js",
     "./list-item-active.svelte": "./list-item-active.svelte",

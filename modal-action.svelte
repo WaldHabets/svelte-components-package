@@ -10,6 +10,9 @@ export const sheet = {
     show() {
         showSheet = true;
     },
+    showWithData(data) {
+        showSheet = true;
+    },
     hide() {
         showSheet = false;
     }
@@ -21,7 +24,7 @@ export const sheet = {
   <div class="option-sheet centered-page small container dark" transition:slide>
     <header class="option-sheet-header">
       <h1>{title}</h1>
-      <button class="option-sheet-cancel" on:click={sheet.hide}>
+      <button class="flat-button option-sheet-cancel" on:click={sheet.hide}>
         <svg viewBox="0 0 24 24">
           <path d="{mdiClose}" />
         </svg>
@@ -67,7 +70,7 @@ export const sheet = {
   font-weight: bold;
   text-align: center;
   line-height: 24px;
-  color: white;
+  color: var(--pt-text);
 }
 .option-sheet-backdrop .option-sheet .option-sheet-header h1 {
   flex-grow: 1;
@@ -81,11 +84,9 @@ export const sheet = {
   height: 32px;
   padding: 4px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
   border: none;
 }
 .option-sheet-backdrop .option-sheet .option-sheet-header .option-sheet-cancel:hover {
-  background: rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 .option-sheet-backdrop .option-sheet .option-sheet-header .option-sheet-cancel svg {
