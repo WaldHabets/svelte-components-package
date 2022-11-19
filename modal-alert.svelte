@@ -6,9 +6,10 @@ import { mdiClose } from "@mdi/js";
 export let title = "";
 export let showModal = false;
 export let param = null;
-export let cancelAction = "";
+export let cancelAction = false;
 export let negativeAction = false;
 export let positiveAction = false;
+$: buttons = !cancelAction || !negativeAction || !positiveAction;
 export const modal = {
     show() {
         showModal = true;
@@ -52,10 +53,13 @@ function onPositiveAction() {
       <div class="option-sheet-content">
         <slot></slot>
       </div>
+      {#if buttons}
       <div class="option-sheet-buttons">
-        <button class="option-sheet-button button --big" on:click={onCancelAction}>
-          {cancelAction}
-        </button>
+        {#if cancelAction}
+          <button class="option-sheet-button button --big" on:click={onCancelAction}>
+            {cancelAction}
+          </button>
+        {/if}
         {#if negativeAction}
           <button class="option-sheet-button button --alert --big" on:click={onNegativeAction}>
             {negativeAction}
@@ -67,6 +71,7 @@ function onPositiveAction() {
           </button>
         {/if}
       </div>
+      {/if}
     </div>
   </div>
 {/if}
@@ -93,6 +98,8 @@ function onPositiveAction() {
   margin: 0 auto;
   height: min-content;
   box-shadow: 0 0 16px -8px black;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 .option-sheet-backdrop .option-sheet .option-sheet-header {
@@ -102,6 +109,7 @@ function onPositiveAction() {
   box-sizing: border-box;
   padding: 16px 16px 8px 16px;
   overflow: hidden;
+  flex-shrink: 0;
   /** font */
   font-size: 20px;
   font-weight: bold;
@@ -147,6 +155,7 @@ function onPositiveAction() {
   justify-content: space-between;
   padding: 8px;
   gap: 8px;
+  flex-shrink: 0;
 }
 .option-sheet-backdrop .option-sheet .option-sheet-buttons .option-sheet-button {
   flex-grow: 1;

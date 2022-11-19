@@ -5,7 +5,7 @@ declare const __propDef: {
         /** Properties */ title?: string | undefined;
         showModal?: boolean | undefined;
         param?: object | undefined;
-        cancelAction?: string | undefined;
+        cancelAction?: string | false | undefined;
         negativeAction?: string | false | undefined;
         positiveAction?: string | false | undefined;
         modal?: Modal | undefined;

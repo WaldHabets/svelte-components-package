@@ -9,7 +9,9 @@ export let sidebar = [];
 /** Icons */
 import { mdiArrowLeft, mdiMenu } from "@mdi/js";
 //import { SidebarGroup } from "./sidebar-contents";
-import { page } from "$app/stores";
+import {} from "@sveltejs/kit";
+import {} from "svelte/store";
+export let page;
 /** Locals */
 let sidebarState = '--collapsed';
 let width;
