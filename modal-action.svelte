@@ -92,7 +92,7 @@ export const sheet = {
 .option-sheet-backdrop .option-sheet .option-sheet-header .option-sheet-cancel svg {
   width: 24px;
   height: 24px;
-  fill: currentColor;
+  fill: var(--pt-text);
 }
 .option-sheet-backdrop .option-sheet .option-sheet-content {
   max-height: calc(100vh - 48px - 56px);

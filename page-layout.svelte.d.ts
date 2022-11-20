@@ -12,7 +12,6 @@ declare const __propDef: {
         [evt: string]: CustomEvent<any>;
     };
     slots: {
-        'header-end': {};
         'sidebar-actions': {};
         main: {};
     };

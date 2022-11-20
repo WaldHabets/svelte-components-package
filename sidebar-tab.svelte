@@ -81,8 +81,8 @@ li a span {
 }
 li:hover, li.active {
   cursor: pointer;
-  color: #042100;
-  background-color: #d5ebcb;
+  color: var(--pt-theme-on-soft);
+  background-color: var(--pt-theme-soft);
   border-radius: 32px;
 }
 li.expanded {

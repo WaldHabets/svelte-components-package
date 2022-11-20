@@ -44,7 +44,7 @@ function onPositiveAction() {
     <div class="option-sheet" transition:slide>
       <header class="option-sheet-header">
         <h1>{title}</h1>
-        <button class="option-sheet-cancel" on:click={onCancelAction}>
+        <button class="flat-button option-sheet-cancel" on:click={onCancelAction}>
           <svg viewBox="0 0 24 24">
             <path d="{mdiClose}" />
           </svg>
@@ -124,17 +124,15 @@ function onPositiveAction() {
   height: 32px;
   padding: 4px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.1);
   border: none;
 }
 .option-sheet-backdrop .option-sheet .option-sheet-header .option-sheet-cancel:hover {
-  background: rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 .option-sheet-backdrop .option-sheet .option-sheet-header .option-sheet-cancel svg {
   width: 24px;
   height: 24px;
-  fill: currentColor;
+  fill: var(--pt-text);
 }
 .option-sheet-backdrop .option-sheet .option-sheet-content {
   max-height: calc(100vh - 48px - 56px);
@@ -149,7 +147,7 @@ function onPositiveAction() {
 }
 .option-sheet-backdrop .option-sheet .option-sheet-buttons {
   /** border */
-  border-top: 2px solid #bbb;
+  border-top: 2px solid var(--pt-border);
   /** layout */
   display: flex;
   justify-content: space-between;

@@ -29,27 +29,19 @@ function swipeHandler(event) {
 
 <div id="page" class={sidebarState + ' ' + formfactor} bind:clientWidth={width}>
     <header id="page-header">
-        <section id="page-header-sidebar">
-            {#if (!wide && !expanded && !backNavigation)}
-                <button class="" id="nav-back-button" on:click={toggleSidebar}>
-                    <svg viewBox="0 0 24 24">
-                        <path d={mdiMenu} />
-                    </svg>
-                </button>
-            {:else if backNavigation}
-                <a class="" id="nav-back-button" href={backNavigation} on:click={toggleSidebar}>
-                    <svg viewBox="0 0 24 24">
-                        <path d={mdiArrowLeft} />
-                    </svg>
-                </a>
-            {/if}
-        </section>
-        <section id="page-header-title">
-
-        </section>
-        <section id="page-header-actions">
-            <slot name="header-end" />
-        </section>
+        {#if (!wide && !expanded && !backNavigation)}
+            <button class="" id="nav-back-button" on:click={toggleSidebar}>
+                <svg viewBox="0 0 24 24">
+                    <path d={mdiMenu} />
+                </svg>
+            </button>
+        {:else if backNavigation}
+            <a class="" id="nav-back-button" href={backNavigation} on:click={toggleSidebar}>
+                <svg viewBox="0 0 24 24">
+                    <path d={mdiArrowLeft} />
+                </svg>
+            </a>
+        {/if}
     </header>
     {#if wide}
         <div id="page-sidebar" transition:fly="{{x: 100, y: 0, delay: 150, duration: 500, easing: quintOut }}">
@@ -142,9 +134,10 @@ function swipeHandler(event) {
 }
 
 #page {
-  background-color: #f0f3fa;
+  background-color: var(--pt-container-bg);
+  box-shadow: var(--pt-shadow-container);
   display: grid;
-  grid-template-rows: 56px calc(100vh - 56px);
+  height: 100vh;
 }
 #page.--small {
   grid-template-areas: "header" "content";
@@ -152,7 +145,7 @@ function swipeHandler(event) {
 }
 #page.--small #page-header {
   grid-area: header;
-  background-color: #f8f8f8;
+  background-color: var(--pt-body-bg);
 }
 #page.--small #page-sidebar-container {
   width: 100vw;
@@ -164,7 +157,7 @@ function swipeHandler(event) {
   border: none;
   position: absolute;
   box-sizing: border-box;
-  background-color: #f8f8f8;
+  background-color: var(--pt-body-bg);
   max-width: calc(100% - 96px);
   width: 100%;
   height: 100%;
@@ -192,45 +185,25 @@ function swipeHandler(event) {
 #page.--small #nav-back-button svg {
   width: 24px;
   height: 24px;
+  fill: var(--pt-text);
 }
 #page.--small #page-header {
-  padding: 0;
+  padding: 8px 16px;
   margin: 0;
-  display: flex;
-}
-#page.--small #page-header section {
-  box-sizing: border-box;
-  height: 56px;
-  padding: 8px;
-}
-#page.--small #page-header #page-header-sidebar {
-  flex-shrink: 0;
-  display: flex;
-  gap: 8px;
-}
-#page.--small #page-header #page-header-title {
-  width: available;
-  width: -moz-available;
-  flex-grow: 1;
-}
-#page.--small #page-header #page-header-actions {
-  width: max-content;
-  flex-shrink: 0;
 }
 #page.--small #page-sidebar {
   height: 100%;
 }
 #page.--small #page-main {
   overflow-y: scroll;
-  background-color: #f8f8f8;
+  background-color: var(--pt-body-bg);
 }
 #page.--wide {
-  grid-template-areas: "header header" "sidebar main";
+  grid-template-areas: "sidebar main";
   grid-template-columns: 300px auto;
 }
 #page.--wide #page-header {
-  grid-area: header;
-  background-color: transparent;
+  display: none;
 }
 #page.--wide #page-sidebar {
   grid-area: sidebar;
@@ -242,7 +215,7 @@ function swipeHandler(event) {
   padding: 8px 0;
 }
 #page.--wide #page-sidebar .sidebar-group:not(:first-child) {
-  border-top: 1px solid #bbb;
+  border-top: 1px solid var(--pt-border);
 }
 #page.--wide #page-sidebar .sidebar-group .sidebar-item {
   box-sizing: border-box;
@@ -282,15 +255,13 @@ function swipeHandler(event) {
 }
 #page.--wide #page-sidebar .sidebar-group .sidebar-item:hover, #page.--wide #page-sidebar .sidebar-group .sidebar-item.active {
   cursor: pointer;
-  color: #042100;
-  background-color: #d5ebcb;
+  color: var(--pt-theme-on-soft);
+  background-color: var(--pt-theme-soft);
   border-radius: 32px;
 }
 #page.--wide #page-main {
   grid-area: main;
-  border-top-left-radius: 16px;
-  border-left: 2px solid #bbb;
-  border-top: 2px solid #bbb;
+  border-left: 2px solid var(--pt-border);
 }
 #page.--wide #nav-back-button {
   box-sizing: border-box;
@@ -310,35 +281,16 @@ function swipeHandler(event) {
 #page.--wide #nav-back-button svg {
   width: 24px;
   height: 24px;
+  fill: var(--pt-text);
 }
 #page.--wide #page-header {
-  padding: 0;
+  padding: 8px 16px;
   margin: 0;
-  display: flex;
-}
-#page.--wide #page-header section {
-  box-sizing: border-box;
-  height: 56px;
-  padding: 8px;
-}
-#page.--wide #page-header #page-header-sidebar {
-  flex-shrink: 0;
-  display: flex;
-  gap: 8px;
-}
-#page.--wide #page-header #page-header-title {
-  width: available;
-  width: -moz-available;
-  flex-grow: 1;
-}
-#page.--wide #page-header #page-header-actions {
-  width: max-content;
-  flex-shrink: 0;
 }
 #page.--wide #page-sidebar {
   height: 100%;
 }
 #page.--wide #page-main {
   overflow-y: scroll;
-  background-color: #f8f8f8;
+  background-color: var(--pt-body-bg);
 }</style>
