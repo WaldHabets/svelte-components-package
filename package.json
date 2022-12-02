@@ -34,6 +34,7 @@
     "./modal-picker.svelte": "./modal-picker.svelte",
     "./modal": "./modal.js",
     "./page-layout.svelte": "./page-layout.svelte",
+    "./placeholder.svelte": "./placeholder.svelte",
     "./sidebar-contents": "./sidebar-contents.js",
     "./sidebar-tab.svelte": "./sidebar-tab.svelte"
   },

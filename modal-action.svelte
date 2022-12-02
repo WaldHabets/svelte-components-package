@@ -20,7 +20,7 @@ export const sheet = {
 </script>
 
 {#if showSheet}
-<div class="option-sheet-backdrop"  on:click|self={sheet.hide}>
+<div class="option-sheet-backdrop"  on:click|self={sheet.hide} on:keyup>
   <div class="option-sheet centered-page small container dark" transition:slide>
     <header class="option-sheet-header">
       <h1>{title}</h1>

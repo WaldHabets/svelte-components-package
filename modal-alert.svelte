@@ -1,5 +1,5 @@
 <script>/** Transitions */
-import { slide } from 'svelte/transition';
+import { slide } from "svelte/transition";
 /** Icons */
 import { mdiClose } from "@mdi/js";
 /** Properties */
@@ -20,57 +20,69 @@ export const modal = {
     },
     hide() {
         showModal = false;
-    }
+    },
 };
 /** events */
-import { createEventDispatcher } from 'svelte';
+import { createEventDispatcher } from "svelte";
 const dispatch = createEventDispatcher();
 function onCancelAction() {
     modal.hide();
-    dispatch('cancel', param);
+    dispatch("cancel", param);
 }
 function onNegativeAction() {
     modal.hide();
-    dispatch('negative', param);
+    dispatch("negative", param);
 }
 function onPositiveAction() {
     modal.hide();
-    dispatch('positive', param);
+    dispatch("positive", param);
 }
 </script>
 
 {#if showModal}
-  <div class="option-sheet-backdrop"  on:click|self={onCancelAction}>
+  <div class="option-sheet-backdrop" on:click|self={onCancelAction} on:keyup>
     <div class="option-sheet" transition:slide>
       <header class="option-sheet-header">
         <h1>{title}</h1>
-        <button class="flat-button option-sheet-cancel" on:click={onCancelAction}>
+        <button
+          class="flat-button option-sheet-cancel"
+          on:click={onCancelAction}
+        >
           <svg viewBox="0 0 24 24">
-            <path d="{mdiClose}" />
+            <path d={mdiClose} />
           </svg>
         </button>
       </header>
       <div class="option-sheet-content">
-        <slot></slot>
+        <slot />
       </div>
       {#if buttons}
-      <div class="option-sheet-buttons">
-        {#if cancelAction}
-          <button class="option-sheet-button button --big" on:click={onCancelAction}>
-            {cancelAction}
-          </button>
-        {/if}
-        {#if negativeAction}
-          <button class="option-sheet-button button --alert --big" on:click={onNegativeAction}>
-            {negativeAction}
-          </button>
-        {/if}
-        {#if positiveAction}
-          <button class="option-sheet-button button --themed --big" on:click={onPositiveAction}>
-            {positiveAction}
-          </button>
-        {/if}
-      </div>
+        <div class="option-sheet-buttons">
+          {#if cancelAction}
+            <button
+              class="option-sheet-button button --big"
+              on:click={onCancelAction}
+            >
+              {cancelAction}
+            </button>
+          {/if}
+          {#if negativeAction}
+            <button
+              class="option-sheet-button button --alert --big"
+              on:click={onNegativeAction}
+            >
+              {negativeAction}
+            </button>
+          {/if}
+          {#if positiveAction}
+            <button
+              class="option-sheet-button button --themed --big"
+              on:click={onPositiveAction}
+            >
+              {positiveAction}
+            </button>
+          {/if}
+        </div>
       {/if}
     </div>
   </div>

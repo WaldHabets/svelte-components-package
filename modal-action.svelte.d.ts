@@ -7,6 +7,8 @@ declare const __propDef: {
         sheet?: Modal | undefined;
     };
     events: {
+        keyup: KeyboardEvent;
+    } & {
         [evt: string]: CustomEvent<any>;
     };
     slots: {

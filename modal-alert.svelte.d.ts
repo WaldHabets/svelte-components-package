@@ -11,6 +11,7 @@ declare const __propDef: {
         modal?: Modal | undefined;
     };
     events: {
+        keyup: KeyboardEvent;
         cancel: CustomEvent<any>;
         negative: CustomEvent<any>;
         positive: CustomEvent<any>;

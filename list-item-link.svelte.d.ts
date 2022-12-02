@@ -7,6 +7,7 @@ declare const __propDef: {
         href?: string | false | undefined;
     };
     events: {
+        keyup: KeyboardEvent;
         navigate: CustomEvent<any>;
     } & {
         [evt: string]: CustomEvent<any>;

@@ -5,18 +5,18 @@
 <script>/** Icons */
 import { mdiArrowRight, mdiOpenInNew } from "@mdi/js";
 /** events */
-import { createEventDispatcher } from 'svelte';
+import { createEventDispatcher } from "svelte";
 const dispatch = createEventDispatcher();
 /** Exports */
 export let outgoing = false;
 export let iconStart = false;
 export let href = false;
 function clickHandler() {
-    dispatch('navigate');
+    dispatch("navigate");
 }
 </script>
 
-<li class="list-item active" on:click={clickHandler}>
+<li class="list-item active" on:click={clickHandler} on:keyup>
   <a {href}>
     {#if iconStart}
       <div class="label-group">

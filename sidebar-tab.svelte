@@ -1,9 +1,9 @@
 <script context="module">
-    export const prerender = true;
+  export const prerender = true;
 </script>
 
 <script>/** events */
-import { createEventDispatcher } from 'svelte';
+import { createEventDispatcher } from "svelte";
 const dispatch = createEventDispatcher();
 import { page } from "$app/stores";
 export let icon;
@@ -11,19 +11,19 @@ export let href;
 export let title;
 $: active = $page.url.pathname === href;
 function notify() {
-    dispatch('nav');
+    dispatch("nav");
 }
 </script>
 
-<li {title} class={active ? 'active' : ''}>
-   <a {href} on:click>
-       <svg viewBox="0 0 24 24">
-           <path d={icon} />
-       </svg>
-       <span>
-           {title}
-       </span>
-   </a>
+<li {title} class={active ? "active" : ""}>
+  <a {href} on:click>
+    <svg viewBox="0 0 24 24">
+      <path d={icon} />
+    </svg>
+    <span>
+      {title}
+    </span>
+  </a>
 </li>
 
 <style>/** Theme Colours                       */
@@ -33,17 +33,17 @@ function notify() {
  * Should be readable when used on top of $theme-primary
  */
 /**
- * Primary theme colour
- * Should be readable when used on top of $theme-light
- */
+  * Primary theme colour
+  * Should be readable when used on top of $theme-light
+  */
 /**
- * Used as background for certain hover effects and active control elements.
- * Content and border should be coloured with $theme-primary or $theme-on-primary
- */
+  * Used as background for certain hover effects and active control elements.
+  * Content and border should be coloured with $theme-primary or $theme-on-primary
+  */
 /**
- * Can be used as container backgrounds, for example headers.
- * In this case it should use $theme-on-primary as border colour.
- */
+  * Can be used as container backgrounds, for example headers.
+  * In this case it should use $theme-on-primary as border colour.
+  */
 li {
   box-sizing: border-box;
   height: 48px;

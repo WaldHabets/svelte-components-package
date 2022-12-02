@@ -1,5 +1,5 @@
 <script>/** Transitions */
-import { slide } from 'svelte/transition';
+import { slide } from "svelte/transition";
 /** Icons */
 import { mdiClose } from "@mdi/js";
 /** Properties */
@@ -17,43 +17,47 @@ export const modal = {
     },
     hide() {
         showModal = false;
-    }
+    },
 };
 /** events */
-import { createEventDispatcher } from 'svelte';
+import { createEventDispatcher } from "svelte";
 const dispatch = createEventDispatcher();
 function onCancelAction() {
     modal.hide();
-    dispatch('cancel', param);
+    dispatch("cancel", param);
 }
 function onSelectAction() {
     modal.hide();
-    dispatch('select', param);
+    dispatch("select", param);
 }
 </script>
 
 {#if showModal}
-  <div class="option-sheet-backdrop"  on:click|self={onCancelAction}>
+  <div class="option-sheet-backdrop" on:click|self={onCancelAction}>
     <div class="option-sheet" transition:slide>
       <header class="option-sheet-header">
         <h1>{title}</h1>
         <button class="option-sheet-cancel" on:click={onCancelAction}>
           <svg viewBox="0 0 24 24">
-            <path d="{mdiClose}" />
+            <path d={mdiClose} />
           </svg>
         </button>
       </header>
-      <div class="selected">
-
-      </div>
+      <div class="selected" />
       <div class="option-sheet-content">
-        <slot></slot>
+        <slot />
       </div>
       <div class="option-sheet-buttons">
-        <button class="option-sheet-button button big" on:click={onCancelAction}>
+        <button
+          class="option-sheet-button button big"
+          on:click={onCancelAction}
+        >
           {cancelAction}
         </button>
-        <button class="option-sheet-button button themed big" on:click={onSelectAction}>
+        <button
+          class="option-sheet-button button themed big"
+          on:click={onSelectAction}
+        >
           {selectAction}
         </button>
       </div>

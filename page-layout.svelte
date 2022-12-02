@@ -1,5 +1,5 @@
-<script>import { fly } from 'svelte/transition';
-import { quintOut } from 'svelte/easing';
+<script>import { fly } from "svelte/transition";
+import { quintOut } from "svelte/easing";
 /** Components */
 import ListItemLink from "./list-item-link.svelte";
 /** Exports */
@@ -13,95 +13,124 @@ import {} from "@sveltejs/kit";
 import {} from "svelte/store";
 export let page;
 /** Locals */
-let sidebarState = '--collapsed';
+let sidebarState = "--collapsed";
 let width;
-$: formfactor = width > 780 ? '--wide' : '--small';
-$: wide = formfactor === '--wide';
-$: expanded = sidebarState === '--expanded';
+$: formfactor = width > 780 ? "--wide" : "--small";
+$: wide = formfactor === "--wide";
+$: expanded = sidebarState === "--expanded";
 function toggleSidebar() {
-    sidebarState = (sidebarState === '--expanded')
-        ? '--collapsed'
-        : '--expanded';
+    sidebarState = sidebarState === "--expanded" ? "--collapsed" : "--expanded";
 }
-function swipeHandler(event) {
-}
+function swipeHandler(event) { }
 </script>
 
-<div id="page" class={sidebarState + ' ' + formfactor} bind:clientWidth={width}>
-    <header id="page-header">
-        {#if (!wide && !expanded && !backNavigation)}
-            <button class="" id="nav-back-button" on:click={toggleSidebar}>
-                <svg viewBox="0 0 24 24">
-                    <path d={mdiMenu} />
-                </svg>
-            </button>
-        {:else if backNavigation}
-            <a class="" id="nav-back-button" href={backNavigation} on:click={toggleSidebar}>
-                <svg viewBox="0 0 24 24">
-                    <path d={mdiArrowLeft} />
-                </svg>
-            </a>
-        {/if}
-    </header>
-    {#if wide}
-        <div id="page-sidebar" transition:fly="{{x: 100, y: 0, delay: 150, duration: 500, easing: quintOut }}">
-            <nav>
-                {#each sidebar as sidebarGroup}
-                    <ul class="sidebar-group">
-                        {#each sidebarGroup.items as sidebarItem}
-                            <li
-                              title={sidebarItem.text}
-                              class={$page.url.pathname === sidebarItem.href ? 'active sidebar-item' : 'sidebar-item'}
-                                on:click={toggleSidebar}>
-                                <a href={sidebarItem.href}>
-                                    <svg viewBox="0 0 24 24">
-                                        <path d={sidebarItem.icon} />
-                                    </svg>
-                                    <span>
-                                        {sidebarItem.text}
-                                    </span>
-                                </a>
-                            </li>
-                        {/each}
-                    </ul>
-                {/each}
-            </nav>
-            <div>
-                <slot name="sidebar-actions" />
-            </div>
-        </div>
-    {:else if expanded}
-        <div
-          id="page-sidebar-container"
-          on:click|self={toggleSidebar}>
-            <nav
-              id="page-sidebar"
-              transition:fly="{{x: -100, y: 0, delay: 150, duration: 500, easing: quintOut }}">
-                {#each sidebar as sidebarGroup}
-                    <section class="container-wrapper">
-                    <ul class="list-box">
-                        {#each sidebarGroup.items as sidebarItem}
-                            <ListItemLink
-                              href={sidebarItem.href}
-                              iconStart={sidebarItem.icon}
-                              on:navigate={toggleSidebar}>
-                                {sidebarItem.text}
-                            </ListItemLink>
-                        {/each}
-                    </ul>
-                    </section>
-                {/each}
-            </nav>
-            <div>
-                <slot name="sidebar-actions" />
-            </div>
-        </div>
+<div id="page" class={sidebarState + " " + formfactor} bind:clientWidth={width}>
+  <header id="page-header">
+    {#if !wide && !expanded && !backNavigation}
+      <button class="" id="nav-back-button" on:click={toggleSidebar}>
+        <svg viewBox="0 0 24 24">
+          <path d={mdiMenu} />
+        </svg>
+      </button>
+    {:else if backNavigation}
+      <a
+        class=""
+        id="nav-back-button"
+        href={backNavigation}
+        on:click={toggleSidebar}
+      >
+        <svg viewBox="0 0 24 24">
+          <path d={mdiArrowLeft} />
+        </svg>
+      </a>
     {/if}
-    <!--{#if (wide || !expanded)}-->
-        <main id="page-main" transition:fly="{{x: -100, y: 0, delay: 150, duration: 500, easing: quintOut }}">
-            <slot name="main" />
-        </main>
-    <!--{/if}-->
+  </header>
+  {#if wide}
+    <div
+      id="page-sidebar"
+      transition:fly={{
+        x: 100,
+        y: 0,
+        delay: 150,
+        duration: 500,
+        easing: quintOut,
+      }}
+    >
+      <nav>
+        {#each sidebar as sidebarGroup}
+          <ul class="sidebar-group">
+            {#each sidebarGroup.items as sidebarItem}
+              <li
+                title={sidebarItem.text}
+                class={$page.url.pathname === sidebarItem.href
+                  ? "active sidebar-item"
+                  : "sidebar-item"}
+                on:click={toggleSidebar}
+              >
+                <a href={sidebarItem.href}>
+                  <svg viewBox="0 0 24 24">
+                    <path d={sidebarItem.icon} />
+                  </svg>
+                  <span>
+                    {sidebarItem.text}
+                  </span>
+                </a>
+              </li>
+            {/each}
+          </ul>
+        {/each}
+      </nav>
+      <div>
+        <slot name="sidebar-actions" />
+      </div>
+    </div>
+  {:else if expanded}
+    <div id="page-sidebar-container" on:click|self={toggleSidebar}>
+      <nav
+        id="page-sidebar"
+        transition:fly={{
+          x: -100,
+          y: 0,
+          delay: 150,
+          duration: 500,
+          easing: quintOut,
+        }}
+      >
+        {#each sidebar as sidebarGroup}
+          <section class="container-wrapper">
+            <ul class="list-box">
+              {#each sidebarGroup.items as sidebarItem}
+                <ListItemLink
+                  href={sidebarItem.href}
+                  iconStart={sidebarItem.icon}
+                  on:navigate={toggleSidebar}
+                >
+                  {sidebarItem.text}
+                </ListItemLink>
+              {/each}
+            </ul>
+          </section>
+        {/each}
+      </nav>
+      <div>
+        <slot name="sidebar-actions" />
+      </div>
+    </div>
+  {/if}
+  <!--{#if (wide || !expanded)}-->
+  <main
+    id="page-main"
+    transition:fly={{
+      x: -100,
+      y: 0,
+      delay: 150,
+      duration: 500,
+      easing: quintOut,
+    }}
+  >
+    <slot name="main" />
+  </main>
+  <!--{/if}-->
 </div>
 
 <style>/** Theme Colours                       */
@@ -111,17 +140,17 @@ function swipeHandler(event) {
  * Should be readable when used on top of $theme-primary
  */
 /**
- * Primary theme colour
- * Should be readable when used on top of $theme-light
- */
+  * Primary theme colour
+  * Should be readable when used on top of $theme-light
+  */
 /**
- * Used as background for certain hover effects and active control elements.
- * Content and border should be coloured with $theme-primary or $theme-on-primary
- */
+  * Used as background for certain hover effects and active control elements.
+  * Content and border should be coloured with $theme-primary or $theme-on-primary
+  */
 /**
- * Can be used as container backgrounds, for example headers.
- * In this case it should use $theme-on-primary as border colour.
- */
+  * Can be used as container backgrounds, for example headers.
+  * In this case it should use $theme-on-primary as border colour.
+  */
 :root {
   padding: 0;
   margin: 0;
