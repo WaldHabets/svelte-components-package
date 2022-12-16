@@ -85,6 +85,7 @@ function swipeHandler(event) { }
       <nav>
         {#if sidebar}
           {#if sidebar.back}
+            <div class="standalone-item">
               <a href={sidebar.back.href}>
                 <svg viewBox="0 0 24 24">
                   <path d={sidebar.back.icon} />
@@ -93,6 +94,7 @@ function swipeHandler(event) { }
                     {sidebar.back.text}
                   </span>
               </a>
+            </div>
           {/if}
         {#each sidebar.items as sidebarGroup}
           <ul class="sidebar-group">
@@ -239,6 +241,48 @@ function swipeHandler(event) { }
   background-color: var(--pt-theme-soft);
   border-radius: 32px;
 }
+#page .sidebar .standalone-item {
+  box-sizing: border-box;
+  height: 48px;
+  overflow: hidden;
+  margin: 0 8px;
+}
+#page .sidebar .standalone-item a {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+  padding: 8px;
+}
+#page .sidebar .standalone-item a svg {
+  box-sizing: border-box;
+  vertical-align: middle;
+  flex-shrink: 0;
+  color: inherit;
+  height: 32px;
+  width: 32px;
+  padding: 4px;
+  margin: 0 4px;
+}
+#page .sidebar .standalone-item a svg path {
+  fill: currentColor;
+}
+#page .sidebar .standalone-item a span {
+  display: inline-block;
+  line-height: 32px;
+  font-size: 16px;
+  overflow: hidden;
+  color: inherit;
+}
+#page .sidebar .standalone-item:hover, #page .sidebar .standalone-item.active {
+  cursor: pointer;
+  color: var(--pt-theme-on-soft);
+  background-color: var(--pt-theme-soft);
+  border-radius: 32px;
+}
 #page .content {
   overflow-y: scroll;
   background-color: var(--pt-body-bg);
@@ -303,6 +347,48 @@ function swipeHandler(event) { }
   color: inherit;
 }
 #page.--desktop .sidebar .sidebar-group .sidebar-item:hover, #page.--desktop .sidebar .sidebar-group .sidebar-item.active {
+  cursor: pointer;
+  color: var(--pt-theme-on-soft);
+  background-color: var(--pt-theme-soft);
+  border-radius: 32px;
+}
+#page.--desktop .sidebar .standalone-item {
+  box-sizing: border-box;
+  height: 48px;
+  overflow: hidden;
+  margin: 0 8px;
+}
+#page.--desktop .sidebar .standalone-item a {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+  padding: 8px;
+}
+#page.--desktop .sidebar .standalone-item a svg {
+  box-sizing: border-box;
+  vertical-align: middle;
+  flex-shrink: 0;
+  color: inherit;
+  height: 32px;
+  width: 32px;
+  padding: 4px;
+  margin: 0 4px;
+}
+#page.--desktop .sidebar .standalone-item a svg path {
+  fill: currentColor;
+}
+#page.--desktop .sidebar .standalone-item a span {
+  display: inline-block;
+  line-height: 32px;
+  font-size: 16px;
+  overflow: hidden;
+  color: inherit;
+}
+#page.--desktop .sidebar .standalone-item:hover, #page.--desktop .sidebar .standalone-item.active {
   cursor: pointer;
   color: var(--pt-theme-on-soft);
   background-color: var(--pt-theme-soft);
