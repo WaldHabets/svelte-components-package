@@ -84,13 +84,7 @@ function swipeHandler(event) { }
     <div class="sidebar">
       <nav>
         {#if sidebar}
-        {#each sidebar.items as sidebarGroup}
-          <ul class="sidebar-group">
-            {#if sidebar.back}
-            <li
-              title={sidebar.back.text}
-              on:click={toggleSidebar}
-            >
+          {#if sidebar.back}
               <a href={sidebar.back.href}>
                 <svg viewBox="0 0 24 24">
                   <path d={sidebar.back.icon} />
@@ -99,8 +93,9 @@ function swipeHandler(event) { }
                     {sidebar.back.text}
                   </span>
               </a>
-            </li>
-            {/if}
+          {/if}
+        {#each sidebar.items as sidebarGroup}
+          <ul class="sidebar-group">
             {#each sidebarGroup.items as sidebarItem}
               <li
                 title={sidebarItem.text}
