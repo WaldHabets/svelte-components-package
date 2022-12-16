@@ -1,4 +1,5 @@
 declare namespace _default {
+    export { layout };
     export { PageLayout };
     export { SidebarTab };
     export { DetailsContainer };
@@ -8,8 +9,10 @@ declare namespace _default {
     export { ModalAlert };
     export { ModalPicker };
     export { Placeholder };
+    export { SidebarTypes };
 }
 export default _default;
+import { layout } from "./layout";
 import PageLayout from "./page-layout.svelte";
 import SidebarTab from "./sidebar-tab.svelte";
 import DetailsContainer from "./details-container.svelte";
@@ -19,3 +22,4 @@ import ModalAction from "./modal-action.svelte";
 import ModalAlert from "./modal-alert.svelte";
 import ModalPicker from "./modal-picker.svelte";
 import Placeholder from "./placeholder.svelte";
+import * as SidebarTypes from "./sidebar-contents.js";

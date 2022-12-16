@@ -27,6 +27,7 @@
     "./breadcrumbs.svelte": "./breadcrumbs.svelte",
     "./details-container.svelte": "./details-container.svelte",
     ".": "./index.js",
+    "./layout": "./layout.js",
     "./list-item-active.svelte": "./list-item-active.svelte",
     "./list-item-link.svelte": "./list-item-link.svelte",
     "./modal-action.svelte": "./modal-action.svelte",

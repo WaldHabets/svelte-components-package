@@ -1,18 +1,18 @@
 import { SvelteComponentTyped } from "svelte";
 import { type Page } from "@sveltejs/kit";
 import { type Readable } from "svelte/store";
+import type { SidebarContent } from "./sidebar-contents";
 declare const __propDef: {
     props: {
         /** Exports */ backNavigation?: string | false | undefined;
         backNavigationLabel?: string | undefined;
-        sidebar?: any[] | undefined;
+        sidebar?: SidebarContent | null | undefined;
         page: Readable<Page>;
     };
     events: {
         [evt: string]: CustomEvent<any>;
     };
     slots: {
-        'sidebar-actions': {};
         main: {};
     };
 };
