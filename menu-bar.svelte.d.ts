@@ -1,6 +1,5 @@
 import { SvelteComponentTyped } from "svelte";
 export declare let prerender: boolean;
-export declare let ssr: boolean;
 declare const __propDef: {
     props: {
         width?: "small" | "wide" | undefined;
