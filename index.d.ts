@@ -29,7 +29,6 @@ import ModalAlert from "./modal-alert.svelte";
 import ModalPicker from "./modal-picker.svelte";
 import Placeholder from "./placeholder.svelte";
 import SidebarButton from "./sidebar-button.svelte";
-import * as SidebarTypes from "./sidebar-contents.js";
 import HeaderBar from "./header-bar.svelte";
 import MenuBar from "./menu-bar.svelte";
 import SimpleContainerHeader from "./simple-container-header.svelte";
