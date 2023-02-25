@@ -2,7 +2,6 @@ declare namespace _default {
     export { layout };
     export { Breadcrumbs };
     export { PageLayout };
-    export const SidebarTab: any;
     export { DetailsContainer };
     export { ListItemActive };
     export { ListItemLink };
@@ -11,7 +10,6 @@ declare namespace _default {
     export { ModalPicker };
     export { Placeholder };
     export { SidebarButton };
-    export { SidebarTypes };
     export { HeaderBar };
     export { MenuBar };
     export { SimpleContainerHeader };

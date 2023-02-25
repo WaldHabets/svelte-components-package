@@ -11,7 +11,6 @@ import ModalPicker from "./modal-picker.svelte";
 import PageLayout from "./page-layout.svelte";
 import Placeholder from "./placeholder.svelte";
 import SidebarButton from "./sidebar-button.svelte";
-import * as SidebarTypes from "$lib/sidebar-contents.ts";
 import SimpleContainerHeader from "./simple-container-header.svelte";
 import Tablist from "./tablist.svelte";
 import { layout } from "./layout";
@@ -20,7 +19,6 @@ export default {
   layout,
   Breadcrumbs,
   PageLayout,
-  SidebarTab,
   DetailsContainer,
   ListItemActive,
   ListItemLink,
@@ -29,9 +27,8 @@ export default {
   ModalPicker,
   Placeholder,
   SidebarButton,
-  SidebarTypes,
   HeaderBar,
   MenuBar,
   SimpleContainerHeader,
-  Tablist
+  Tablist,
 };
