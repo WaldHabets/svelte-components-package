@@ -79,6 +79,9 @@ li a span {
   overflow: hidden;
   color: inherit;
 }
+li a:focus-visible {
+  outline: 3px solid var(--pt-theme-primary);
+}
 li:hover, li.active {
   cursor: pointer;
   color: var(--pt-theme-on-soft);

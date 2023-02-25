@@ -5,45 +5,41 @@ import { mdiClose } from "@mdi/js";
 /** Properties */
 export let title = "";
 let isShowing = false;
-export const sheet = {
-    show() {
-        isShowing = true;
-    },
-    showWithData(data) {
-        isShowing = true;
-    },
-    hide() {
-        isShowing = false;
-    },
-    onKeyEvent(e) {
-        if (e.key === 'Escape') {
-            e.preventDefault();
-            sheet.hide();
-        }
+function show() {
+    isShowing = true;
+}
+function showWithData(data) {
+    isShowing = true;
+}
+function hide() {
+    isShowing = false;
+}
+function onKeyEvent(e) {
+    switch (e.keyCode) {
+        case 27:
+            this.hide();
+            break;
     }
-};
+}
 </script>
 
-<svelte:window on:keydown={sheet.onKeyEvent} />
 {#if isShowing}
-<div aria-modal="true" role="dialog"
-     class="option-sheet-backdrop"
-     on:click|self={sheet.hide}
-     on:keyup>
-  <div class="option-sheet centered-page small container dark" transition:slide>
-    <header class="option-sheet-header">
-      <h1>{title}</h1>
-      <button class="flat-button option-sheet-cancel" on:click={sheet.hide}>
-        <svg viewBox="0 0 24 24">
-          <path d="{mdiClose}" />
-        </svg>
-      </button>
-    </header>
-    <div class="option-sheet-content">
+  <div aria-modal="true" role="dialog"
+       class="option-sheet-backdrop"
+       on:click|self={hide}
+       on:keyup>
+    <div class="option-sheet centered-page small container" transition:slide>
+      <header class="option-sheet-header">
+        <h1>{title}</h1>
+        <button class="flat-button option-sheet-cancel" on:click={hide}>
+          <svg viewBox="0 0 24 24">
+            <path d="{mdiClose}" />
+          </svg>
+        </button>
+      </header>
       <slot></slot>
     </div>
   </div>
-</div>
 {/if}
 
 <style>.option-sheet-backdrop {

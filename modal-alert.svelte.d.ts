@@ -3,8 +3,7 @@ import type Modal from "./modal";
 declare const __propDef: {
     props: {
         /** Properties */ title?: string | undefined;
-        showModal?: boolean | undefined;
-        param?: object | undefined;
+        param?: object | null | undefined;
         cancelAction?: string | false | undefined;
         negativeAction?: string | false | undefined;
         positiveAction?: string | false | undefined;

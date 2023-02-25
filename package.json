@@ -26,18 +26,26 @@
     "./package.json": "./package.json",
     "./breadcrumbs.svelte": "./breadcrumbs.svelte",
     "./details-container.svelte": "./details-container.svelte",
+    "./header-bar.svelte": "./header-bar.svelte",
+    "./id": "./id.js",
     ".": "./index.js",
     "./layout": "./layout.js",
     "./list-item-active.svelte": "./list-item-active.svelte",
     "./list-item-link.svelte": "./list-item-link.svelte",
+    "./menu-bar.svelte": "./menu-bar.svelte",
     "./modal-action.svelte": "./modal-action.svelte",
     "./modal-alert.svelte": "./modal-alert.svelte",
+    "./modal-base.svelte": "./modal-base.svelte",
     "./modal-picker.svelte": "./modal-picker.svelte",
     "./modal": "./modal.js",
     "./page-layout.svelte": "./page-layout.svelte",
     "./placeholder.svelte": "./placeholder.svelte",
+    "./sidebar-button.svelte": "./sidebar-button.svelte",
     "./sidebar-contents": "./sidebar-contents.js",
-    "./sidebar-tab.svelte": "./sidebar-tab.svelte"
+    "./sidebar-tab.svelte": "./sidebar-tab.svelte",
+    "./sidebar.svelte": "./sidebar.svelte",
+    "./simple-container-header.svelte": "./simple-container-header.svelte",
+    "./tablist.svelte": "./tablist.svelte"
   },
   "svelte": "./index.js"
 }

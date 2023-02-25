@@ -9,11 +9,10 @@ export interface BackItem {
     icon: string;
 }
 export interface SidebarGroup {
-    name: string;
+    name: string | null;
     items: SidebarItem[];
 }
 export interface SidebarContent {
-    back: BackItem | null;
     title: string;
     items: SidebarGroup[];
 }

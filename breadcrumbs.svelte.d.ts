@@ -1,11 +1,13 @@
 import { SvelteComponentTyped } from "svelte";
-export declare const prerender = true;
+export interface Crumb {
+    name: string;
+    href: string;
+}
 declare const __propDef: {
     props: {
-        breadcrumbs?: {
-            label: string;
-            href: string;
-        }[] | undefined;
+        /** Styling */ cStyle?: string | null | undefined;
+        cClass?: string | null | undefined;
+        /** Attributes */ crumbs: Crumb[];
     };
     events: {
         [evt: string]: CustomEvent<any>;

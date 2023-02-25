@@ -1,5 +1,4 @@
-<script context="module">
-  export let prerender = true;
+<script context="module">export let prerender = true;
 </script>
 
 <script>/** Icons */

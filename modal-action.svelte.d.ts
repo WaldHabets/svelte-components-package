@@ -3,7 +3,6 @@ import type Modal from "./modal";
 declare const __propDef: {
     props: {
         /** Properties */ title?: string | undefined;
-        showSheet?: boolean | undefined;
         sheet?: Modal | undefined;
     };
     events: {

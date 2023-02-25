@@ -4,7 +4,7 @@ import { slide } from "svelte/transition";
 import { mdiClose } from "@mdi/js";
 /** Properties */
 export let title = "";
-export let showModal = false;
+let isShowing = false;
 export let param = null;
 export let cancelAction = false;
 export let negativeAction = false;
@@ -12,15 +12,20 @@ export let positiveAction = false;
 $: buttons = !cancelAction || !negativeAction || !positiveAction;
 export const modal = {
     show() {
-        showModal = true;
+        isShowing = true;
     },
     showWithData(data) {
-        showModal = true;
-        param = data;
+        isShowing = true;
     },
     hide() {
-        showModal = false;
+        isShowing = false;
     },
+    onKeyEvent(e) {
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            onCancelAction();
+        }
+    }
 };
 /** events */
 import { createEventDispatcher } from "svelte";
@@ -39,8 +44,12 @@ function onPositiveAction() {
 }
 </script>
 
-{#if showModal}
-  <div class="option-sheet-backdrop" on:click|self={onCancelAction} on:keyup>
+<svelte:window on:keydown={modal.onKeyEvent} />
+{#if isShowing}
+  <div aria-modal="true" role="dialog"
+       class="option-sheet-backdrop"
+       on:click|self={onCancelAction}
+       on:keyup>
     <div class="option-sheet" transition:slide>
       <header class="option-sheet-header">
         <h1>{title}</h1>
