@@ -27,13 +27,12 @@ const setFocus = (offset) => {
     const index = getIndexOfId(focused.id);
     if (index < 0)
         return;
-    const nextIndex = (index + offset) % tabs.length;
+    moveFocus(index + offset);
+};
+const moveFocus = (index) => {
+    const nextIndex = index % tabs.length;
     const nextTab = tabs[nextIndex < 0 ? tabs.length - 1 : nextIndex];
     document.getElementById(id + nextTab.key).focus();
-};
-const moveFocus = () => {
-    const index = id + active.key;
-    document.getElementById(index).focus();
 };
 const onKeyEvent = (e) => {
     const tablist = document.getElementById(id);
@@ -48,6 +47,14 @@ const onKeyEvent = (e) => {
             setFocus(+1);
             e.preventDefault();
             break;
+        case "Home":
+            moveFocus(0);
+            e.preventDefault();
+            break;
+        case "End":
+            moveFocus(tabs.length - 1);
+            e.preventDefault();
+            break;
     }
 };
 </script>
@@ -57,8 +64,7 @@ const onKeyEvent = (e) => {
   role="tablist"
   {id}
   class="tablist {cClass}"
-  style={cStyle}
-  on:focus={moveFocus}>
+  style={cStyle} >
   {#each tabs as tab}
     <button
       role="tab"

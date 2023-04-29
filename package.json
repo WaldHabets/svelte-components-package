@@ -29,6 +29,8 @@
       "svelte": "./index.js"
     },
     "./breadcrumbs.svelte": "./breadcrumbs.svelte",
+    "./checkbox-group.svelte": "./checkbox-group.svelte",
+    "./checkbox.svelte": "./checkbox.svelte",
     "./details-container.svelte": "./details-container.svelte",
     "./header-bar.svelte": "./header-bar.svelte",
     "./id": "./id.js",
