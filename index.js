@@ -15,7 +15,7 @@ import SimpleContainerHeader from "./simple-container-header.svelte";
 import Tablist from "./tablist.svelte";
 import { layout } from "./layout";
 
-export default {
+export {
   layout,
   Breadcrumbs,
   PageLayout,

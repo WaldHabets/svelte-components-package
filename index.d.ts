@@ -1,21 +1,3 @@
-declare namespace _default {
-    export { layout };
-    export { Breadcrumbs };
-    export { PageLayout };
-    export { DetailsContainer };
-    export { ListItemActive };
-    export { ListItemLink };
-    export { ModalAction };
-    export { ModalAlert };
-    export { ModalPicker };
-    export { Placeholder };
-    export { SidebarButton };
-    export { HeaderBar };
-    export { MenuBar };
-    export { SimpleContainerHeader };
-    export { Tablist };
-}
-export default _default;
 import { layout } from "./layout";
 import Breadcrumbs from "./breadcrumbs.svelte";
 import PageLayout from "./page-layout.svelte";
@@ -31,3 +13,4 @@ import HeaderBar from "./header-bar.svelte";
 import MenuBar from "./menu-bar.svelte";
 import SimpleContainerHeader from "./simple-container-header.svelte";
 import Tablist from "./tablist.svelte";
+export { layout, Breadcrumbs, PageLayout, DetailsContainer, ListItemActive, ListItemLink, ModalAction, ModalAlert, ModalPicker, Placeholder, SidebarButton, HeaderBar, MenuBar, SimpleContainerHeader, Tablist };
