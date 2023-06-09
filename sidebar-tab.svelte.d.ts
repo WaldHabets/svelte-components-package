@@ -14,9 +14,9 @@ declare const __propDef: {
     };
     slots: {};
 };
-export declare type SidebarTabProps = typeof __propDef.props;
-export declare type SidebarTabEvents = typeof __propDef.events;
-export declare type SidebarTabSlots = typeof __propDef.slots;
+export type SidebarTabProps = typeof __propDef.props;
+export type SidebarTabEvents = typeof __propDef.events;
+export type SidebarTabSlots = typeof __propDef.slots;
 export default class SidebarTab extends SvelteComponentTyped<SidebarTabProps, SidebarTabEvents, SidebarTabSlots> {
 }
 export {};

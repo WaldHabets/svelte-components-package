@@ -15,9 +15,9 @@ declare const __propDef: {
     };
     slots: {};
 };
-export declare type TablistProps = typeof __propDef.props;
-export declare type TablistEvents = typeof __propDef.events;
-export declare type TablistSlots = typeof __propDef.slots;
+export type TablistProps = typeof __propDef.props;
+export type TablistEvents = typeof __propDef.events;
+export type TablistSlots = typeof __propDef.slots;
 export default class Tablist extends SvelteComponentTyped<TablistProps, TablistEvents, TablistSlots> {
 }
 export {};

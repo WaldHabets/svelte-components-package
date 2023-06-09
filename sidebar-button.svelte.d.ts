@@ -10,9 +10,9 @@ declare const __propDef: {
     };
     slots: {};
 };
-export declare type SidebarButtonProps = typeof __propDef.props;
-export declare type SidebarButtonEvents = typeof __propDef.events;
-export declare type SidebarButtonSlots = typeof __propDef.slots;
+export type SidebarButtonProps = typeof __propDef.props;
+export type SidebarButtonEvents = typeof __propDef.events;
+export type SidebarButtonSlots = typeof __propDef.slots;
 export default class SidebarButton extends SvelteComponentTyped<SidebarButtonProps, SidebarButtonEvents, SidebarButtonSlots> {
 }
 export {};

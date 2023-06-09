@@ -21,9 +21,9 @@ declare const __propDef: {
         default: {};
     };
 };
-export declare type ModalAlertProps = typeof __propDef.props;
-export declare type ModalAlertEvents = typeof __propDef.events;
-export declare type ModalAlertSlots = typeof __propDef.slots;
+export type ModalAlertProps = typeof __propDef.props;
+export type ModalAlertEvents = typeof __propDef.events;
+export type ModalAlertSlots = typeof __propDef.slots;
 export default class ModalAlert extends SvelteComponentTyped<ModalAlertProps, ModalAlertEvents, ModalAlertSlots> {
     get modal(): Modal;
 }

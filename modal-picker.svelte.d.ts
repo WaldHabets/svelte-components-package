@@ -19,9 +19,9 @@ declare const __propDef: {
         default: {};
     };
 };
-export declare type ModalPickerProps = typeof __propDef.props;
-export declare type ModalPickerEvents = typeof __propDef.events;
-export declare type ModalPickerSlots = typeof __propDef.slots;
+export type ModalPickerProps = typeof __propDef.props;
+export type ModalPickerEvents = typeof __propDef.events;
+export type ModalPickerSlots = typeof __propDef.slots;
 export default class ModalPicker extends SvelteComponentTyped<ModalPickerProps, ModalPickerEvents, ModalPickerSlots> {
     get modal(): Modal;
 }

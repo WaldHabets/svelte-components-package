@@ -10,9 +10,9 @@ declare const __propDef: {
     };
     slots: {};
 };
-export declare type PlaceholderProps = typeof __propDef.props;
-export declare type PlaceholderEvents = typeof __propDef.events;
-export declare type PlaceholderSlots = typeof __propDef.slots;
+export type PlaceholderProps = typeof __propDef.props;
+export type PlaceholderEvents = typeof __propDef.events;
+export type PlaceholderSlots = typeof __propDef.slots;
 export default class Placeholder extends SvelteComponentTyped<PlaceholderProps, PlaceholderEvents, PlaceholderSlots> {
 }
 export {};

@@ -1,5 +1,4 @@
 import { SvelteComponentTyped } from "svelte";
-export declare let prerender: boolean;
 declare const __propDef: {
     props: {
         width?: "small" | "wide" | undefined;
@@ -11,9 +10,9 @@ declare const __propDef: {
         default: {};
     };
 };
-export declare type MenuBarProps = typeof __propDef.props;
-export declare type MenuBarEvents = typeof __propDef.events;
-export declare type MenuBarSlots = typeof __propDef.slots;
+export type MenuBarProps = typeof __propDef.props;
+export type MenuBarEvents = typeof __propDef.events;
+export type MenuBarSlots = typeof __propDef.slots;
 export default class MenuBar extends SvelteComponentTyped<MenuBarProps, MenuBarEvents, MenuBarSlots> {
 }
 export {};

@@ -1,5 +1,4 @@
 import { SvelteComponentTyped } from "svelte";
-export declare let prerender: boolean;
 declare const __propDef: {
     props: {
         width?: "small" | "wide" | undefined;
@@ -12,9 +11,9 @@ declare const __propDef: {
     };
     slots: {};
 };
-export declare type HeaderBarProps = typeof __propDef.props;
-export declare type HeaderBarEvents = typeof __propDef.events;
-export declare type HeaderBarSlots = typeof __propDef.slots;
+export type HeaderBarProps = typeof __propDef.props;
+export type HeaderBarEvents = typeof __propDef.events;
+export type HeaderBarSlots = typeof __propDef.slots;
 export default class HeaderBar extends SvelteComponentTyped<HeaderBarProps, HeaderBarEvents, HeaderBarSlots> {
 }
 export {};

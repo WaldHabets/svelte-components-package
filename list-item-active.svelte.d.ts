@@ -13,9 +13,9 @@ declare const __propDef: {
         default: {};
     };
 };
-export declare type ListItemActiveProps = typeof __propDef.props;
-export declare type ListItemActiveEvents = typeof __propDef.events;
-export declare type ListItemActiveSlots = typeof __propDef.slots;
+export type ListItemActiveProps = typeof __propDef.props;
+export type ListItemActiveEvents = typeof __propDef.events;
+export type ListItemActiveSlots = typeof __propDef.slots;
 export default class ListItemActive extends SvelteComponentTyped<ListItemActiveProps, ListItemActiveEvents, ListItemActiveSlots> {
 }
 export {};
