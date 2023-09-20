@@ -49,9 +49,8 @@ function hide() {
 </nav>
 
 <style>.sidebar {
-  background-color: var(--pt-container-bg);
+  background-color: var(--pt-container-bg-highlight);
   border-right: 1px solid var(--pt-border);
-  box-shadow: var(--pt-shadow-container);
   height: 100vh;
   z-index: 100;
   overflow-y: scroll;
@@ -68,7 +67,7 @@ function hide() {
 .sidebar .sidebar-group-title {
   font-size: 1.125rem;
   font-weight: bold;
-  color: var(--pt-theme-primary-standalone);
+  color: var(--pt-text);
   margin-top: 16px;
   margin-bottom: 4px;
   margin-inline: 16px;
@@ -121,15 +120,15 @@ function hide() {
   outline: none;
 }
 .sidebar .sidebar-group-items .sidebar-item a:hover, .sidebar .sidebar-group-items .sidebar-item a:focus-visible {
-  color: var(--pt-theme-on-soft);
-  background-color: var(--pt-theme-soft);
-  border-radius: 32px;
+  color: var(--pt-text);
+  background-color: var(--pt-flat-control-bg);
+  border-radius: 8px;
 }
 .sidebar .sidebar-group-items .sidebar-item.active {
   cursor: pointer;
 }
 .sidebar .sidebar-group-items .sidebar-item.active a {
-  color: var(--pt-theme-on-primary);
-  background-color: var(--pt-theme-primary);
-  border-radius: 32px;
+  color: var(--pt-text);
+  background-color: var(--pt-flat-control-bg);
+  border-radius: 8px;
 }</style>
