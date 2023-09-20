@@ -53,6 +53,8 @@ function hide() {
   border-right: 1px solid var(--pt-border);
   height: 100vh;
   z-index: 100;
+  box-sizing: border-box;
+  padding: 8px;
   overflow-y: scroll;
 }
 .sidebar .detached-header {
@@ -84,7 +86,10 @@ function hide() {
   box-sizing: border-box;
   height: 48px;
   overflow: hidden;
-  margin: 0 8px;
+  margin: 0;
+}
+.sidebar .sidebar-group-items .sidebar-item:not(:first-child) {
+  margin-top: 8px;
 }
 .sidebar .sidebar-group-items .sidebar-item a {
   display: flex;
