@@ -1,6 +1,7 @@
 import { SvelteComponentTyped } from "svelte";
 export interface Tab {
     name: string;
+    icon?: string | null;
     key: string;
 }
 declare const __propDef: {

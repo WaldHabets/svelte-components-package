@@ -71,7 +71,13 @@ const onKeyEvent = (e) => {
       aria-selected="{active.key === tab.key}"
       id="{id+tab.key}"
       class={active.key === tab.key ? "selected" : ""}
-      on:click={() => setActive(tab)}>{tab.name}
+      on:click={() => setActive(tab)}>
+      {#if tab?.icon}
+        <svg viewBox="0 0 24 24">
+          <path d="{tab.icon}" />
+        </svg>
+      {/if}
+      {tab.name}
     </button>
   {/each}
 </div>

@@ -2,6 +2,7 @@ import { SvelteComponentTyped } from "svelte";
 declare const __propDef: {
     props: {
         width?: "small" | "wide" | undefined;
+        ariaLabel?: string | undefined;
     };
     events: {
         [evt: string]: CustomEvent<any>;

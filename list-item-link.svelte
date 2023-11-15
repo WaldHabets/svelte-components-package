@@ -10,12 +10,9 @@ const dispatch = createEventDispatcher();
 export let outgoing = false;
 export let iconStart = false;
 export let href = false;
-function clickHandler() {
-    dispatch("navigate");
-}
 </script>
 
-<li class="list-item active" on:click={clickHandler} on:keyup>
+<li class="list-item active">
   <a {href}>
     {#if iconStart}
       <div class="label-group">

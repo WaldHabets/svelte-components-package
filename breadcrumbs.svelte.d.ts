@@ -8,6 +8,7 @@ declare const __propDef: {
         /** Styling */ cStyle?: string | null | undefined;
         cClass?: string | null | undefined;
         /** Attributes */ crumbs: Crumb[];
+        ariaLabel?: string | undefined;
     };
     events: {
         [evt: string]: CustomEvent<any>;
