@@ -9,6 +9,7 @@ const dispatch = createEventDispatcher();
 /** Exports */
 export let outgoing = false;
 export let iconStart = false;
+export let iconAriaLabel = "";
 export let href = false;
 </script>
 
@@ -16,7 +17,7 @@ export let href = false;
   <a {href}>
     {#if iconStart}
       <div class="label-group">
-        <svg viewBox="0 0 24 24" class="icon-start">
+        <svg viewBox="0 0 24 24" class="icon-start" aria-label="{iconAriaLabel}" >
           <path d={iconStart} />
         </svg>
         <p>
@@ -28,7 +29,7 @@ export let href = false;
         <slot />
       </p>
     {/if}
-    <svg viewBox="0 0 24 24" class="icon-end">
+    <svg viewBox="0 0 24 24" class="icon-end" aria-hidden="true">
       <path d={outgoing ? mdiOpenInNew : mdiArrowRight} />
     </svg>
   </a>

@@ -4,6 +4,7 @@ declare const __propDef: {
     props: {
         /** Exports */ outgoing?: boolean | undefined;
         iconStart?: string | false | undefined;
+        iconAriaLabel?: string | undefined;
         href?: string | false | undefined;
     };
     events: {
