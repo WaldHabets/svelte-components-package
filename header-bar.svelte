@@ -1,11 +1,11 @@
 <script>export let width = "wide";
 export let title = "";
 export let blurb = null;
-export let standalone = false;
+export let raised = false;
 </script>
 
-<header class="header-bar {standalone ? '--standalone' : ''}">
-  <div class="centered-page {width}">
+<header class="{raised ? 'header-bar-raised' : 'header-bar'}">
+  <div class="centering-{width}">
     <h1>{title}</h1>
     {#if blurb}
       <p>{blurb}</p>

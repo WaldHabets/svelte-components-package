@@ -1,10 +1,10 @@
 import { SvelteComponentTyped } from "svelte";
 declare const __propDef: {
     props: {
-        width?: "small" | "wide" | undefined;
+        width?: "small" | "wide" | "none" | undefined;
         title?: string | undefined;
         blurb?: string | null | undefined;
-        standalone?: boolean | undefined;
+        raised?: boolean | undefined;
     };
     events: {
         [evt: string]: CustomEvent<any>;
