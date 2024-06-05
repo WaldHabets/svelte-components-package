@@ -1,6 +1,7 @@
 <script>/** Id */
 import genID from "./id";
 const id = `dialog-${genID()}`;
+export let title = null;
 let dialog;
 export function show() {
     dialog.showModal();
@@ -13,9 +14,11 @@ export function hide() {
 
 <dialog {id} bind:this={dialog} on:click|self={hide} class="modal">
   <div class="modal-box">
-    <header>
-      <h1>Modal title</h1>
-    </header>
+    {#if title}
+      <header>
+        <h1>{title}</h1>
+      </header>
+    {/if}
     <section>
       <slot name="content"></slot>
     </section>
@@ -23,7 +26,6 @@ export function hide() {
       <slot name="buttons"></slot>
     </footer>
   </div>
-
 </dialog>
 
 <style>.modal {

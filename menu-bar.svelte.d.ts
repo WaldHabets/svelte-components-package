@@ -1,7 +1,7 @@
 import { SvelteComponentTyped } from "svelte";
 declare const __propDef: {
     props: {
-        width?: "small" | "wide" | undefined;
+        width?: "small" | "wide" | "none" | undefined;
         ariaLabel?: string | undefined;
     };
     events: {

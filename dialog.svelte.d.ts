@@ -1,6 +1,7 @@
 import { SvelteComponentTyped } from "svelte";
 declare const __propDef: {
     props: {
+        title?: string | null | undefined;
         show?: (() => void) | undefined;
         hide?: (() => void) | undefined;
     };

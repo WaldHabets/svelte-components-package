@@ -3,7 +3,7 @@ export let ariaLabel = "menubar";
 </script>
 
 <section class="menu-bar" aria-label="{ariaLabel}">
-  <div class="centered-page {width}">
+  <div class="centering-{width}">
     <slot />
   </div>
 </section>

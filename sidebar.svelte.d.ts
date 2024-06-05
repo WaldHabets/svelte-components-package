@@ -9,6 +9,8 @@ declare const __propDef: {
         page: Readable<Page>;
     };
     events: {
+        keyup: KeyboardEvent;
+    } & {
         [evt: string]: CustomEvent<any>;
     };
     slots: {};

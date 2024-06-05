@@ -34,10 +34,6 @@ export let href = false;
   align-items: center;
   justify-content: space-between;
 }
-.list-item.active a {
-  color: inherit;
-  text-decoration: none;
-}
 .list-item.active .label-group {
   display: flex;
   align-items: center;
