@@ -8,6 +8,8 @@ declare const __propDef: {
         bClassDetails?: string | undefined;
     };
     events: {
+        keydown: KeyboardEvent;
+    } & {
         [evt: string]: CustomEvent<any>;
     };
     slots: {

@@ -26,25 +26,7 @@ function notify() {
   </a>
 </li>
 
-<style>/** Theme Colours                       */
-/** ----------------------------------- */
-/**
- * Color to be shown on $theme-primary
- * Should be readable when used on top of $theme-primary
- */
-/**
-  * Primary theme colour
-  * Should be readable when used on top of $theme-light
-  */
-/**
-  * Used as background for certain hover effects and active control elements.
-  * Content and border should be coloured with $theme-primary or $theme-on-primary
-  */
-/**
-  * Can be used as container backgrounds, for example headers.
-  * In this case it should use $theme-on-primary as border colour.
-  */
-li {
+<style>li {
   box-sizing: border-box;
   height: 48px;
   overflow: hidden;
@@ -84,7 +66,7 @@ li a:focus-visible {
 }
 li:hover, li.active {
   cursor: pointer;
-  color: var(--pt-theme-on-soft);
+  color: var(--pt-grey-8);
   background-color: var(--pt-theme-soft);
   border-radius: 32px;
 }

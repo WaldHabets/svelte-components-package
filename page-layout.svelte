@@ -54,33 +54,15 @@ function onKeyEvent(e) {
   </main>
 </div>
 
-<style>/** Theme Colours                       */
-/** ----------------------------------- */
-/**
- * Color to be shown on $theme-primary
- * Should be readable when used on top of $theme-primary
- */
-/**
-  * Primary theme colour
-  * Should be readable when used on top of $theme-light
-  */
-/**
-  * Used as background for certain hover effects and active control elements.
-  * Content and border should be coloured with $theme-primary or $theme-on-primary
-  */
-/**
-  * Can be used as container backgrounds, for example headers.
-  * In this case it should use $theme-on-primary as border colour.
-  */
-#page {
-  background-color: var(--pt-body-bg);
+<style>#page {
+  background-color: var(--pt-grey-1);
   box-shadow: var(--pt-shadow-container);
   display: grid;
   height: 100vh;
 }
 #page .content {
   overflow-y: scroll;
-  background-color: var(--pt-body-bg);
+  background-color: var(--pt-grey-1);
 }
 #page.--mobile .backdrop {
   position: absolute;

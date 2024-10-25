@@ -20,13 +20,13 @@ export let disabled = false;
 <style>.radio-group {
   display: flex;
   padding: 8px;
-  accent-color: var(--pt-theme-primary);
+  accent-color: var(--pt-accent-3);
   font-size: 1rem;
   font-weight: normal;
   align-items: center;
 }
 .radio-group:hover:not(.disabled) {
-  background: var(--pt-container-bg-highlight);
+  background: var(--pt-grey-3);
   border-radius: 8px;
 }
 .radio-group:focus-within:focus-visible {

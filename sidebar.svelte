@@ -50,8 +50,7 @@ function hide() {
 </nav>
 
 <style>.sidebar {
-  background-color: var(--pt-container-bg-highlight);
-  border-right: 1px solid var(--pt-border);
+  background-color: var(--pt-grey-2);
   height: 100vh;
   z-index: 100;
   box-sizing: border-box;
@@ -70,7 +69,7 @@ function hide() {
 .sidebar .sidebar-group-title {
   font-size: 1.125rem;
   font-weight: bold;
-  color: var(--pt-text);
+  color: var(--pt-grey-8);
   margin-top: 16px;
   margin-bottom: 4px;
   margin-inline: 16px;
@@ -81,7 +80,7 @@ function hide() {
   padding: 8px 0;
 }
 .sidebar .sidebar-group-items:not(:last-child) {
-  border-bottom: 1px solid var(--pt-border);
+  border-bottom: 1px solid var(--pt-grey-4);
 }
 .sidebar .sidebar-group-items .sidebar-item {
   box-sizing: border-box;
@@ -126,15 +125,20 @@ function hide() {
   outline: none;
 }
 .sidebar .sidebar-group-items .sidebar-item a:hover, .sidebar .sidebar-group-items .sidebar-item a:focus-visible {
-  color: var(--pt-text);
-  background-color: var(--pt-flat-control-bg);
+  color: var(--pt-grey-8);
+  background-color: var(--pt-grey-3);
   border-radius: 8px;
 }
 .sidebar .sidebar-group-items .sidebar-item.active {
   cursor: pointer;
+  border-radius: 8px;
 }
 .sidebar .sidebar-group-items .sidebar-item.active a {
-  color: var(--pt-text);
-  background-color: var(--pt-flat-control-bg);
+  height: 48px;
+  box-sizing: border-box;
+  color: var(--pt-grey-8);
+  background: var(--pt-accent-1);
+  border: 1px solid var(--pt-accent-4);
+  background: linear-gradient(90deg, var(--pt-accent-1) 0%, var(--pt-accent-2) 100%);
   border-radius: 8px;
 }</style>

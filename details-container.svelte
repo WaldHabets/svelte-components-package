@@ -17,7 +17,7 @@ function clickHandler() {
     <div class="summary">
       <slot name="summary" />
     </div>
-    <button class="expand-button" on:click={clickHandler}>
+    <button class="expand-button" on:click={clickHandler} on:keydown>
       <span>{open ? labelCollapse : labelExpand}</span>
       <svg viewBox="0 0 24 24">
         <path d={open ? mdiChevronUp : mdiChevronDown} />
@@ -29,7 +29,7 @@ function clickHandler() {
       <div class="details">
         <slot name="details" />
       </div>
-      <button class="expand-button" on:click={clickHandler}>
+      <button class="expand-button" on:click={clickHandler} on:keydown>
         <span>{labelCollapse}</span>
         <svg viewBox="0 0 24 24">
           <path d={open ? mdiChevronUp : mdiChevronDown} />

@@ -6,6 +6,8 @@ declare const __propDef: {
         hide?: (() => void) | undefined;
     };
     events: {
+        keyup: KeyboardEvent;
+    } & {
         [evt: string]: CustomEvent<any>;
     };
     slots: {
