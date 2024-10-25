@@ -55,14 +55,13 @@ function onKeyEvent(e) {
 </div>
 
 <style>#page {
-  background-color: var(--pt-grey-1);
-  box-shadow: var(--pt-shadow-container);
+  background-color: var(--pt-grey-2);
   display: grid;
   height: 100vh;
 }
 #page .content {
   overflow-y: scroll;
-  background-color: var(--pt-grey-1);
+  background-color: var(--pt-grey-2);
 }
 #page.--mobile .backdrop {
   position: absolute;

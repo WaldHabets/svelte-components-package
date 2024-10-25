@@ -50,7 +50,8 @@ function hide() {
 </nav>
 
 <style>.sidebar {
-  background-color: var(--pt-grey-2);
+  background-color: var(--pt-grey-3);
+  border-right: 1px solid var(--pt-grey-4);
   height: 100vh;
   z-index: 100;
   box-sizing: border-box;
@@ -126,7 +127,7 @@ function hide() {
 }
 .sidebar .sidebar-group-items .sidebar-item a:hover, .sidebar .sidebar-group-items .sidebar-item a:focus-visible {
   color: var(--pt-grey-8);
-  background-color: var(--pt-grey-3);
+  background-color: var(--pt-grey-4);
   border-radius: 8px;
 }
 .sidebar .sidebar-group-items .sidebar-item.active {
